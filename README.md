@@ -5,21 +5,37 @@ Granulometry from 3D Point clouds
 
 ## Introduction
 
-G3Point is a *Matlab* program which aims at automatically measuring the size, shape, and orientation of a large number of individual grains as detected from any type of 3D point clouds describing the topography of surfaces covered by sediments. This algorithm relies on 3 main phases:
+**G3Point** is a *Matlab* program which aims at automatically measuring the size, shape, and orientation of a large number of individual grains as detected from any type of 3D point clouds describing the topography of surfaces covered by sediments. This algorithm relies on 3 main phases:
 1. Grain **segmentation** using a waterhsed algorithm
 2. Grain **merging and cleaning**
 3. Grain **fitting by geometrical models** including ellipsoids and cuboids
 
-## Point clouds
+If you have any questions or remarks, please contact the developper:
+
+Philippe Steer philippe.steer[at]univ-rennes1.fr
+
+## Requirements
+
+G3Point is plateform independent and requires Matlab, the Image Processing, Lidar, Parallel and Statistics toolboxes.
+
+## Getting started
+
+### Point clouds
 
 G3Point is particularly suited, efficient and fast (few seconds) to deal with **patch-scale (1-100 $m^
 2$) point clouds**, obtained either with terrestrial LiDAR or by SFM, with a typical resolution of ~0.1-1 cm/point and a total number of points around $10^6$. Point clouds are expected to be beforehand cleaned from vegetation or other unwanted features.
 
-## Workflow
+### Workflow
 
 G3Point automatically asks the user to provide with a point cloud (extension in .ply). We recommend to put this point cloud in the subfolder "PointCloud" of the folder "G3Point". G3Point will then create new directories with the same name than the point cloud under "Figure", "Grain" and "Excel" where it will saves the results of G3Point. During a G3Point run, figures will be shown and saved (in "Figure"), the statistical results on the grain size, shape and orientation distribution saved in an Excel table (in "Excel"), and the point clouds of the segmented grains created (in "Grain").
 
-## Algorithm parameters
+### Algorithm parameters
+
+G3Point uses a different set of parameters for each point cloud considered. Parameters are provided in the "param.csv" file that is located under the "PointCloud" directory. Each line of the "param.csv" table starts with the name of the associated point clouds and then defines the value of the parameters that are used. See below a screenshot of a example line of this table:
+
+![image](https://user-images.githubusercontent.com/17555304/159018157-c9874503-9a90-47a1-aca1-7ff0b6337085.png)
+
+We now briefly describe the meaning and role of each parameter
 
     % Yes (=1) or No (=0) parameters
     param.iplot           = b;               % Plot results
