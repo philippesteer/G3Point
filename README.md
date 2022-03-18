@@ -3,6 +3,8 @@
 Granulometry from 3D Point clouds
 > Based on Steer, Guerit et al. (2022)
 
+![ForGitHub](https://user-images.githubusercontent.com/17555304/159018713-7272a95e-6400-4490-83f5-868248cffbcb.gif)
+
 ## Introduction
 
 **G3Point** is a *Matlab* program which aims at automatically measuring the size, shape, and orientation of a large number of individual grains as detected from any type of 3D point clouds describing the topography of surfaces covered by sediments. This algorithm relies on 3 main phases:
@@ -22,8 +24,7 @@ G3Point is plateform independent and requires Matlab, the Image Processing, Lida
 
 ### Point clouds
 
-G3Point is particularly suited, efficient and fast (few seconds) to deal with **patch-scale (1-100 $m^
-2$) point clouds**, obtained either with terrestrial LiDAR or by SFM, with a typical resolution of ~0.1-1 cm/point and a total number of points around $10^6$. Point clouds are expected to be beforehand cleaned from vegetation or other unwanted features.
+G3Point is particularly suited, efficient and fast (few seconds) to deal with patch-scale (1-100 m2) point clouds, obtained either with terrestrial LiDAR or by SFM, with a typical resolution of ~0.1-1 cm/point and a total number of points around 1e6. Point clouds are expected to be beforehand cleaned from vegetation or other unwanted features.
 
 ### Workflow
 
@@ -37,35 +38,36 @@ G3Point uses a different set of parameters for each point cloud considered. Para
 
 We now briefly describe the meaning and role of each parameter
 
+    Name                               % Name of the point cloud (including its extension) 
     % Yes (=1) or No (=0) parameters
-    param.iplot           = b;               % Plot results
-    param.saveplot        = c;               % Save plot
-    param.denoise         = d;               % Denoise the point cloud
-    param.decimate        = e;               % Decimate the point cloud
-    param.minima          = f;               % Remove local minima to ease segmentation
-    param.rotdetrend      = g;               % Rotate and detrend the point cloud
-    param.clean           = h;               % Cleaning segmentation
-    param.gridbynumber    = i;               % Perform a virtual grid-by-number grain size distribution
-    param.savegranulo     = j;               % Export granulometry to a xls file
-    param.savegrain       = k;               % Export grain point cloud in .ply
-    % To decimate the point cloud (used if para.decimate==1)   
-    param.res             = l;               % New resolution of the point cloud
-    % To remove local minima before segmentation (used if param.minima==1) !! TIME-CONSUMING !!
-    param.nscale          = m;               % Number of scale to use
-    param.minscale        = n;               % Minimum scale(radius)
-    param.maxscale        = o;               % Maximum potential scale (radius)
+    iplot                              % Plot results
+    saveplot                           % Save plot
+    denoise                            % Denoise the point cloud
+    decimate                           % Decimate the point cloud
+    minima                             % Remove local minima to ease segmentation
+    rotdetrend                         % Rotate and detrend the point cloud
+    clean                              % Cleaning segmentation
+    gridbynumber                       % Perform a virtual grid-by-number grain size distribution
+    savegranulo                        % Export granulometry to a xls file
+    savegrain                          % Export grain point cloud in .ply
+    % To decimate the point cloud (used if decimate==1)   
+    res                                % New resolution of the point cloud
+    % To remove local minima before segmentation (used if minima==1) !! TIME-CONSUMING !!
+    nscale                             % Number of scale to use
+    minscale                           % Minimum scale(radius)
+    maxscale                           % Maximum potential scale (radius)
     % Segmentation parameters
-    param.nnptCloud       = p;               % K nearest neighbours to route water with Fastscape
-    param.radfactor       = q;               % Prefactor that is used to determine if two grains should be merged
-    param.maxangle1       = r;               % Maximum angle above which the normals between two labels are considered different
-    % Cleaning segmentation parameters  (used if param.clean==1)
-    param.maxangle2       = s;               % Maximum angle above which the normals between two labels are considered different
-    param.minflatness     = t;               % Minimum flatness that should have a grain
-    param.minnpoint=max(param.nnptCloud,y);  % Minimal number of points that should contain a grain
+    nnptCloud                          % K nearest neighbours to route water with Fastscape
+    cf                                 % Prefactor that is used to determine if two grains should be merged
+    maxangle1                          % Maximum angle above which the normals between two labels are considered different
+    % Cleaning segmentation parameters  (used if clean==1)
+    maxangle2                          % Maximum angle above which the normals between two labels are considered different
+    minflatness                        % Minimum flatness that should have a grain
+    minnpoint=max(nnptCloud,nmin);     % Minimal number of points that should contain a grain
     % Fitting method    
-    param.fitmethod       = char(u);         % (['direct'] / 'simple' / 'koopmans' / 'inertia' / 'direct_iteratve'/ but 'direct' works much better - and yet use a strong constraint)
-    param.Aquality_thresh = v;               % Minimum surface cover threshold for the ellipsoid (in %)
-    % To perform a grid-by-number sampling (if param.gridbynumber==1)    
-    param.mindiam         = w;               % Minimum grain diameter considered
-    param.naxis           = x;               % which axis to use ? (1=a-axis, 2=b-axis, 3=c-axis)
-    param.dx_gbn          = z;               % grid spacing used for the grid-by-number sampling of grain for gsd
+    fitmethod                          % (['direct'] / 'simple' / 'koopmans' / 'inertia' / 'direct_iteratve'/ but 'direct' works much better - and yet use a strong constraint)
+    Aquality_thresh                    % Minimum surface cover threshold for the ellipsoid (in %)
+    % To perform a grid-by-number sampling (if gridbynumber==1)    
+    mindiam                            % Minimum grain diameter considered
+    naxis                              % Which axis to use ? (1=a-axis, 2=b-axis, 3=c-axis)
+    dx_gbn                             % Grid spacing used for the grid-by-number sampling of grain for gsd
