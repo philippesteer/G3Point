@@ -18,9 +18,11 @@ Philippe Steer philippe.steer[at]univ-rennes1.fr
 
 ## Requirements
 
-G3Point is plateform independent and requires Matlab, the Image Processing, Lidar, Parallel and Statistics toolboxes.
+G3Point is plateform independent and requires Matlab, the Image Processing, Lidar, Parallel and Statistics toolboxes. G3Point also relies on the "geom3d" toolbox (https://www.mathworks.com/matlabcentral/fileexchange/24484-geom3d), written dy David Legland, the "Fitting quadratic curves and surfaces" toolbox (https://www.mathworks.com/matlabcentral/fileexchange/45356-fitting-quadratic-curves-and-surfaces), written by Levente Hunyadi, and the "Minimal Bounding Box" toolbox (https://www.mathworks.com/matlabcentral/fileexchange/18264-minimal-bounding-box?s_tid=srchtitle), written by Johannes Korsawe.
 
 ## Getting started
+
+We recommend to work directly under the main folder G3Point where are located
 
 ### Point clouds
 
