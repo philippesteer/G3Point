@@ -22,7 +22,7 @@ G3Point is plateform independent and requires Matlab, the Image Processing, Lida
 
 ## Getting started
 
-We recommend to work directly under the main folder G3Point where are located
+We recommend to work directly under the main folder G3Point where are located the main "G3Point.m" main function, as well as other major functions and the working directories "PointCloud", "Figure", "Utils", "Grain" and "Excel". Do not rename, move or delete these folders.
 
 ### Point clouds
 
