@@ -74,7 +74,7 @@ We now briefly describe the meaning and role of each parameter
     naxis                              % Which axis to use ? (1=a-axis, 2=b-axis, 3=c-axis)
     dx_gbn                             % Grid spacing used for the grid-by-number sampling of grain for gsd
           
-   ### Notes to users
+   ## Potential bugs and solutions
     
    If you stumbe upon the following error:
    
