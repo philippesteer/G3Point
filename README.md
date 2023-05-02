@@ -77,6 +77,7 @@ We now briefly describe the meaning and role of each parameter
    ### Notes to users
     
    If you stumbe upon the following error:
+   
         Error using ellipsoid_distance
         Too many output arguments.
 
