@@ -73,13 +73,7 @@ We now briefly describe the meaning and role of each parameter
     mindiam                            % Minimum grain diameter considered
     naxis                              % Which axis to use ? (1=a-axis, 2=b-axis, 3=c-axis)
     dx_gbn                             % Grid spacing used for the grid-by-number sampling of grain for gsd
-    
-
-
-   The solution is (thanks very much to Kieran for pointing it out):
-        Do not install the quadratic curves package as the ellipsoid_distance function in the current package on matlab DOES NOT return r2.
-        Use the package that comes in the zip file which DOES return r2.
-        
+          
    ### Notes to users
     
    If you stumbe upon the following error:
@@ -92,3 +86,4 @@ We now briefly describe the meaning and role of each parameter
         Error in G3Point (line 90)
         [Ellipsoidm]=fitellipsoidtograins(Pebble,param,nlabels);
 
+   The solution is (thanks very much to Kieran for pointing it out): Do not install the quadratic curves package as the ellipsoid_distance function in the current package on matlab DOES NOT return r2. Use the package that comes in the zip file which DOES return r2.
